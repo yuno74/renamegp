@@ -57,7 +57,7 @@ async def rename_video(bot, update):
         download_location = Config.DOWNLOAD_LOCATION + "/"
         b = await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
+            text=Translation.DOWNLOAD_START_VIDEO,
             reply_to_message_id=update.message_id
         )
         c_time = time.time()
@@ -66,7 +66,7 @@ async def rename_video(bot, update):
             file_name=download_location,
             progress=progress_for_pyrogram,
             progress_args=(
-                Translation.DOWNLOAD_START,
+                Translation.DOWNLOAD_START_VIDEO,
                 b,
                 c_time
             )
@@ -74,7 +74,7 @@ async def rename_video(bot, update):
         if the_real_download_location is not None:
             try:
                 await bot.edit_message_text(
-                    text=Translation.SAVED_RECVD_DOC_FILE,
+                    text=Translation.SAVED_RECVD_DOC_FILE_VIDEO,
                     chat_id=update.chat.id,
                     message_id=b.message_id
                 )
@@ -132,7 +132,7 @@ async def rename_video(bot, update):
                 reply_to_message_id=update.reply_to_message.message_id,
                 progress=progress_for_pyrogram,
                 progress_args=(
-                    Translation.UPLOAD_START,
+                    Translation.UPLOAD_START_VIDEO,
                     b, 
                     c_time
                 )
@@ -143,7 +143,7 @@ async def rename_video(bot, update):
             except:
                 pass
             await bot.edit_message_text(
-                text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_VIDEO,
                 chat_id=update.chat.id,
                 message_id=b.message_id,
                 disable_web_page_preview=True
@@ -151,6 +151,6 @@ async def rename_video(bot, update):
     else:
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.REPLY_TO_DOC_FOR_RENAME_FILE,
+            text=Translation.REPLY_TO_DOC_FOR_RENAME_VIDEO,
             reply_to_message_id=update.message_id
         )
